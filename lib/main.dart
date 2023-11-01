@@ -15,6 +15,12 @@ class _NinjaCardState extends State<NinjaCard> {
 
   int ninjaLevel = 0;
 
+  void increaseLevel() {
+    setState(() {
+      ninjaLevel++;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,11 +32,7 @@ class _NinjaCardState extends State<NinjaCard> {
         elevation: 0,
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            ninjaLevel++;
-          });
-        },
+        onPressed: increaseLevel,
         backgroundColor: Colors.grey[800],
         child: const Icon(Icons.add),
       ),
