@@ -4,8 +4,16 @@ void main() {
   runApp(const MaterialApp(home: NinjaCard()));
 }
 
-class NinjaCard extends StatelessWidget {
+class NinjaCard extends StatefulWidget {
   const NinjaCard({super.key});
+
+  @override
+  State<NinjaCard> createState() => _NinjaCardState();
+}
+
+class _NinjaCardState extends State<NinjaCard> {
+
+  int ninjaLevel = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -17,29 +25,38 @@ class NinjaCard extends StatelessWidget {
         backgroundColor: Colors.grey[850],
         elevation: 0,
       ),
-      body: const Padding(
-        padding: EdgeInsets.fromLTRB(30, 40, 30, 0),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            ninjaLevel++;
+          });
+        },
+        backgroundColor: Colors.grey[800],
+        child: const Icon(Icons.add),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.fromLTRB(30, 40, 30, 0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Center(
+            const Center(
               child: CircleAvatar(
                 backgroundImage: AssetImage('assets/one-piece.jpeg'),
                 radius: 40,
               ),
             ),
-            Divider(
+            const Divider(
               height: 60,
               color: Colors.grey
             ),
-            Text(
+            const Text(
               'Name',
               style: TextStyle(
                 color: Colors.grey,
               )
             ),
-            SizedBox(height: 10),
-            Text(
+            const SizedBox(height: 10),
+            const Text(
               'Chun-li',
               style: TextStyle(
                 color: Colors.amberAccent,
@@ -47,24 +64,24 @@ class NinjaCard extends StatelessWidget {
                 fontWeight: FontWeight.bold
               )
             ),
-            SizedBox(height: 30),
-            Text(
+            const SizedBox(height: 30),
+            const Text(
               'Currenct Ninja Level',
               style: TextStyle(
                 color: Colors.grey,
               )
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
-              '10',
-              style: TextStyle(
+              '$ninjaLevel',
+              style: const TextStyle(
                 color: Colors.amberAccent,
                 fontSize: 28,
                 fontWeight: FontWeight.bold
               )
             ),
-            SizedBox(height: 30),
-            Row(
+            const SizedBox(height: 30),
+            const Row(
               children: [
                 Icon(
                   Icons.email,
